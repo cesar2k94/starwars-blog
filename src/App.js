@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './componentes/Header';
+import Card from './componentes/Card';
+import List from './componentes/List';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Information from './componentes/Information';
+import Error404 from './componentes/Error404';
 
 function App() {
+   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Switch>{/* Esta etiqueta se usa para solo escoger una ruta*/}
+            <Route  exact path="/" component={List} />
+            <Route path="/information/:id" component={Information} />
+            <Route component={Error404} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
