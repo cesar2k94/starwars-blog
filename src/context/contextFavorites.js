@@ -10,8 +10,6 @@ const ProovedorFavorites = ({children}) => {
 
     const [heroeArray, setHeroeArray] = useState([]);
     
-    //const [heart, setHeart] = useState(1);
-
     return (
         <ContextFavorites.Provider value={{favorites, setFavorites, stateInd, setInd, heroeArray, setHeroeArray}}>
             {children}
