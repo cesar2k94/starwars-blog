@@ -6,11 +6,10 @@ import {ContextFavorites} from './../context/contextFavorites';
 
 const Card = ({list, index}) => {
 
-    const {favorites, setFavorites, setInd, heroeArray, setHeroeArray, setDeleteFav}= useContext(ContextFavorites);
+    const {favorites, setFavorites, setInd, heroeArray, setHeroeArray}= useContext(ContextFavorites);
 
     const [state, setState] = useState(0);
     const [heroe, setHeroe] = useState({});
-    //const [heart, setHeart] = useState(1);
     
     const mystyle={
         width:"",
@@ -39,10 +38,8 @@ const Card = ({list, index}) => {
     const Addfavorites =()=>{
         favorites.map((list2)=>{
             if( list.uid === list2.uid ){
-                setState(1);
-                setDeleteFav(0);
-                setFavorites(favorites.filter(list3=>list3!==list2));
-                return;
+                setState(1);;
+                setFavorites(favorites.filter(list3=>list3.uid!==list2.uid));
             }
         })
         if (state===0) { 

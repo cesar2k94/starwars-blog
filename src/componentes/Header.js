@@ -6,11 +6,10 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
 
-    const { favorites, setFavorites, setDeleteFav } = useContext(ContextFavorites);
+    const { favorites, setFavorites} = useContext(ContextFavorites);
 
     const DeleteElement=(index)=>{
         setFavorites(favorites.filter((list2,ind)=>(ind!==index)));
-        setDeleteFav(1);
     }
 
     return (
