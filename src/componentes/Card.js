@@ -26,7 +26,13 @@ const Card = ({list, index, title}) => {
     useEffect(() => {
         fetch("https://www.swapi.tech/api/"+title + index)
         .then(resp => resp.json())
-        .then(data=>{setHeroe(data)})
+        .then(data=>
+            {
+                setHeroe(data)
+                if (heroe) {
+                    actions.setHeroeArray(heroe);
+                }
+            })
         .catch(error => console.log(error));;
       }, []);
 
@@ -57,23 +63,38 @@ const Card = ({list, index, title}) => {
             src='./data/descarga.jpg' alt="Card image cap " />
             <div className="card-body" style={mystyleBody}>
                 <h6 className="card-title">{list.name}</h6>
-                <p className="card-text">{heroe.result?
-                    <p>Gender: {heroe.result.properties.gender}</p>
-                     : " ..." }
+                <p className="card-text">{heroe.result? 
+                    heroe.result.properties.gender?
+                        <p>Gender: {heroe.result.properties.gender}</p>
+                     : 
+                        heroe.result.properties.population?
+                            <p>Population: {heroe.result.properties.population} </p>
+                        : " ..." 
+                    : " ..."  
+                     }
                 </p>
                 <p className="card-text">{heroe.result? 
-                    <p>Hair Color: {heroe.result.properties.hair_color} </p>
-                    : " ..." } 
+                    heroe.result.properties.hair_color? 
+                        <p>Hair Color: {heroe.result.properties.hair_color} </p>
+                     : 
+                        heroe.result.properties.climate?
+                            <p>Climate: {heroe.result.properties.climate} </p>
+                        : " ..."
+                    : " ..."
+                     } 
                 </p>
-                <p className="card-text">{heroe.result?
-                    <p>Eye Color: {heroe.result.properties.eye_color }</p>
-                    : "" }
+                <p className="card-text">{heroe.result? 
+                    heroe.result.properties.eye_color?
+                        <p>Eye Color: {heroe.result.properties.eye_color}</p>
+                     : "" 
+                    : ""
+                    }
                 </p>
             </div>
             <div className="card-footer d-flex ">
                
                 <Link exact to={`/information/${list.uid}`} className="navlink" >Learn more!</Link> 
-                { (store.favorites.find(element=>element.uid===list.uid))? 
+                { (store.favorites.find(element=>element.name===list.name))? 
                     <FontAwesomeIcon
                     icon={faHeart}
                     className="favorites flex-row-reverse"
