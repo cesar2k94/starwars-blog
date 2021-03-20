@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './componentes/Header';
-import Card from './componentes/Card';
 import List from './componentes/List';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -15,7 +14,7 @@ function App() {
       <Header />
       <Switch>{/* Esta etiqueta se usa para solo escoger una ruta*/}
             <Route  exact path="/" component={List} />
-            <Route path="/information/:id" component={Information} />
+            <Route  exact path="/information/:id" component={Information} />
             <Route component={Error404} />
       </Switch>
     </BrowserRouter>

@@ -4,7 +4,7 @@ import { faHeart, faHeartBroken} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { Context} from '../store/appContext';
 
-const Card = ({list, index}) => {
+const Card = ({list, index, title}) => {
 
     
     const {store, actions}= useContext(Context);
@@ -12,23 +12,21 @@ const Card = ({list, index}) => {
     const [state, setState] = useState(0);
     const [heroe, setHeroe] = useState({});
     
-    const mystyle={
+    const mystylePhoto={
         width:"",
         height: "100px"
+    };
+    const mystyleBody={
+        width:"",
+        minheight: "300px"
     };
 
    
     //Get a guerrero según iud
     useEffect(() => {
-        fetch("https://www.swapi.tech/api/people/" + index)
+        fetch("https://www.swapi.tech/api/"+title + index)
         .then(resp => resp.json())
-        .then(data=>
-            {
-                setHeroe(data)
-                if (heroe) {
-                    actions.setHeroeArray(heroe);
-                }
-            })
+        .then(data=>{setHeroe(data)})
         .catch(error => console.log(error));;
       }, []);
 
@@ -55,13 +53,22 @@ const Card = ({list, index}) => {
     return (
         <div className="card" >
             <img className="card-img-top" 
-            style={mystyle}
+            style={mystylePhoto}
             src='./data/descarga.jpg' alt="Card image cap " />
-            <div className="card-body">
-                <h5 className="card-title">{list.name}</h5>
-                <p className="card-text">Gender:{heroe.result? heroe.result.properties.gender : " ..." }</p>
-                <p className="card-text">Hair Color: {heroe.result? heroe.result.properties.hair_color : " ..." } </p>
-                <p className="card-text">Eye Color: {heroe.result? heroe.result.properties.eye_color : " ..." }</p>
+            <div className="card-body" style={mystyleBody}>
+                <h6 className="card-title">{list.name}</h6>
+                <p className="card-text">{heroe.result?
+                    <p>Gender: {heroe.result.properties.gender}</p>
+                     : " ..." }
+                </p>
+                <p className="card-text">{heroe.result? 
+                    <p>Hair Color: {heroe.result.properties.hair_color} </p>
+                    : " ..." } 
+                </p>
+                <p className="card-text">{heroe.result?
+                    <p>Eye Color: {heroe.result.properties.eye_color }</p>
+                    : "" }
+                </p>
             </div>
             <div className="card-footer d-flex ">
                
