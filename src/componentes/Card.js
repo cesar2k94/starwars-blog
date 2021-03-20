@@ -42,7 +42,7 @@ const Card = ({list, index, title}) => {
     //Eliminar o agregar de favoritos
     const Addfavorites =()=>{
         store.favorites.map((list2)=>{
-            if( list.uid === list2.uid ){
+            if( list.name === list2.name ){
                 setState(1);
                 actions.setFavorites(list2);
             }

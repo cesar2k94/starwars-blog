@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
             setFavorites: (list)=>{
                 const store = getStore();
-                setStore({favorites: store.favorites.filter(list2=>list2.uid!==list.uid)});
+                setStore({favorites: store.favorites.filter(list2=>list2.name!==list.name)});
             },
             setHeroeArray: (heroe)=>{
                 const store = getStore();
