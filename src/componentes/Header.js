@@ -1,17 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ContextFavorites } from './../context/contextFavorites';
+import { Context} from '../store/appContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
 
-    const { favorites, setFavorites} = useContext(ContextFavorites);
+    const {store, actions}= useContext(Context);
 
-    const DeleteElement=(index)=>{
-        setFavorites(favorites.filter((list2,ind)=>(ind!==index)));
-    }
-
+    console.log(store.favorites,"sdfsdf");
+   const DeleteElement=(list)=> actions.setFavorites(list);
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light ">
             < Link exact to="/" className="navlink">
@@ -25,14 +24,14 @@ const Header = () => {
                      </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         {
-                            (favorites.length > 0) ?
-                                favorites.map((list, index) =>
+                            (store.favorites.length > 0) ?
+                            store.favorites.map((list, index) =>
                                     <li className="dropdown-item"
                                         key={index}> {list.name}
                                         <FontAwesomeIcon
                                             icon={faTimes}
                                             className="delete-element"
-                                            onClick={()=>DeleteElement( index)} 
+                                            onClick={()=>DeleteElement( list)} 
                                         />
                                     </li>
                                 )

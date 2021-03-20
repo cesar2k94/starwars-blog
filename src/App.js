@@ -6,6 +6,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Information from './componentes/Information';
 import Error404 from './componentes/Error404';
+import injectContext from './store/appContext';
 
 function App() {
    
@@ -21,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default injectContext(App);

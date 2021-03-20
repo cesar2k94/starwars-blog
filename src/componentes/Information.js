@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ContextFavorites } from './../context/contextFavorites';
-
+import { Context} from '../store/appContext';
+import {useParams} from 'react-router-dom';
 
 const Information = () => {
 
-    const { stateInd } = useContext(ContextFavorites);
+   const {id} = useParams();
+    const {store, actions}= useContext(Context);
     const [warrior, setWarrior] = useState({})
 
     useEffect(() => {
-        fetch("https://www.swapi.tech/api/people/" + stateInd)
+        fetch("https://www.swapi.tech/api/people/" + store.stateInd)
             .then(resp => resp.json())
             .then(data => setWarrior(data))
             .catch(error => console.log(error));

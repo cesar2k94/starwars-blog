@@ -2,11 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faHeartBroken} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import {ContextFavorites} from './../context/contextFavorites';
+import { Context} from '../store/appContext';
 
 const Card = ({list, index}) => {
 
-    const {favorites, setFavorites, setInd, heroeArray, setHeroeArray}= useContext(ContextFavorites);
+    
+    const {store, actions}= useContext(Context);
 
     const [state, setState] = useState(0);
     const [heroe, setHeroe] = useState({});
@@ -25,29 +26,31 @@ const Card = ({list, index}) => {
             {
                 setHeroe(data)
                 if (heroe) {
-                    setHeroeArray(heroeArray.concat(heroe));
+                    actions.setHeroeArray(heroe);
                 }
             })
         .catch(error => console.log(error));;
       }, []);
 
             
-      console.log(heroeArray);
+    
 
     //Eliminar o agregar de favoritos
     const Addfavorites =()=>{
-        favorites.map((list2)=>{
+        store.favorites.map((list2)=>{
             if( list.uid === list2.uid ){
-                setState(1);;
-                setFavorites(favorites.filter(list3=>list3.uid!==list2.uid));
+                setState(1);
+                actions.setFavorites(list2);
             }
         })
         if (state===0) { 
-            setFavorites(favorites.concat({"name":list.name, "uid":list.uid, "favorite":true}));
+            actions.setFavoritesAdd(list);
             setState(1);
         }else{
             setState(0);
         }
+
+        console.log(store.favorites);
     }
     return (
         <div className="card" >
@@ -62,8 +65,8 @@ const Card = ({list, index}) => {
             </div>
             <div className="card-footer d-flex ">
                
-                <Link exact to={`/information/${list.uid}`} value={setInd(list.uid)} className="navlink" >Learn more!</Link> 
-                { (favorites.find(element=>element.uid===list.uid))? 
+                <Link exact to={`/information/${list.uid}`} className="navlink" >Learn more!</Link> 
+                { (store.favorites.find(element=>element.uid===list.uid))? 
                     <FontAwesomeIcon
                     icon={faHeart}
                     className="favorites flex-row-reverse"
