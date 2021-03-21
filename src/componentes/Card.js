@@ -91,7 +91,7 @@ const Card = ({ list, index, title }) => {
             </div>
             <div className="card-footer d-flex" >
                 <Link exact to={`/information/${title}${list.uid}`} className="navlink" >
-                    <button type="button" className="btn btn-outline-primary w-75">Learn more!</button>
+                    <button type="button" className="btn btn-outline-primary button">Learn more!</button>
                 </Link>
                 {(store.favorites.find(element => element.name === list.name)) ?
                     <FontAwesomeIcon

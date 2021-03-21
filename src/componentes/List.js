@@ -16,11 +16,12 @@ const List = () => {
             .then(data => setPlanets(data))
             .catch(error => console.log(error));
     }, []);
+    
 
     return (
         <>
             <h2 className="title">People</h2>
-            <div className="card-deck">
+            <div className="card-deck" >
                 {people.results ?
                     people.results.map((list, index) => <Card list={list} index={index + 1} title={"people/"}/>)
                     :

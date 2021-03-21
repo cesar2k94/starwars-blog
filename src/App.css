@@ -1,3 +1,4 @@
+
 .title{
     margin-bottom: 12px !important;
     margin: 10px;
@@ -11,15 +12,7 @@
     color: red;
 }
 
-.favorites{
-    cursor: pointer;
-	font-size: 25px;
-    margin-top: 5px;
-    margin-left: 0px;
-    position: relative;
-    left: -10px;
-    color: rgb(219, 114, 15);
-}
+
 
 .starwars{
     cursor: pointer; 
@@ -36,6 +29,21 @@
     margin-left: 5px;
     color: rgb(17, 16, 17);
   }
+
+
+
+.favorites{
+    cursor: pointer;
+	font-size: 25px;
+    margin-top: 5px;
+    margin-left: -4px;
+    color: rgb(219, 114, 15);
+}
+
+.button{
+    position: relative;
+    left: -12px;
+}
 
 .card-horizontal {
     display: flex;
