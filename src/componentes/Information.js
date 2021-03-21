@@ -1,20 +1,19 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 //import { Context} from '../store/appContext';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Information = () => {
 
-    const {id} = useParams();
+    const { title, id } = useParams();
     //const {store, actions}= useContext(Context);
     const [warrior, setWarrior] = useState({})
 
     useEffect(() => {
-        fetch("https://www.swapi.tech/api/people/" + id)
+        fetch("https://www.swapi.tech/api/" + title + "/" + id)
             .then(resp => resp.json())
             .then(data => setWarrior(data))
             .catch(error => console.log(error));
     }, []);
-
     return (
         <div>
             <div className="container-fluid">
@@ -36,24 +35,94 @@ const Information = () => {
                                     <p>{warrior.result ? warrior.result.properties.name : " Cargando..."}</p>
                                 </div>
                                 <div className="information">
-                                    <p>Birth Year</p>
-                                    <p>{warrior.result ? warrior.result.properties.birth_year : " Cargando..."}</p>
+                                    {warrior.result ?
+                                        warrior.result.properties.birth_year ?
+                                            <>
+                                                <p>Birth Year</p>
+                                                <p>{warrior.result.properties.birth_year}</p>
+                                            </>
+                                            :
+                                            warrior.result.properties.climate ?
+                                                <>
+                                                    <p>Climate</p>
+                                                    <p>{warrior.result.properties.climate}</p>
+                                                </>
+                                                : ""
+                                        :
+                                        "Cargando..."
+                                    }
                                 </div>
                                 <div className="information">
-                                    <p>Gender</p>
-                                    <p>{warrior.result ? warrior.result.properties.gender : " Cargando..."}</p>
+                                    {warrior.result ?
+                                        warrior.result.properties.gender ?
+                                            <>
+                                                <p>Gender</p>
+                                                <p>{warrior.result.properties.gender}</p>
+                                            </>
+                                            :
+                                            warrior.result.properties.population ?
+                                                <>
+                                                    <p>Population</p>
+                                                    <p>{warrior.result.properties.population}</p>
+                                                </>
+                                                : ""
+                                        :
+                                        "Cargando..."
+                                    }
                                 </div>
                                 <div className="information">
-                                    <p>Height</p>
-                                    <p>{warrior.result ? warrior.result.properties.height : " Cargando..."}</p>
+                                    {warrior.result ?
+                                        warrior.result.properties.height ?
+                                            <>
+                                                <p>Height</p>
+                                                <p>{warrior.result.properties.height}</p>
+                                            </>
+                                            :
+                                            warrior.result.properties.orbital_period ?
+                                                <>
+                                                    <p>Orbital Period</p>
+                                                    <p>{warrior.result.properties.orbital_period}</p>
+                                                </>
+                                                : ""
+                                        :
+                                        "Cargando..."
+                                    }                                
                                 </div>
                                 <div className="information">
-                                    <p>Skin Color</p>
-                                    <p>{warrior.result ? warrior.result.properties.skin_color : " Cargando..."}</p>
+                                    {warrior.result ?
+                                        warrior.result.properties.skin_color ?
+                                            <>
+                                                <p>Skin Color</p>
+                                                <p>{warrior.result.properties.skin_color}</p>
+                                            </>
+                                            :
+                                            warrior.result.properties.rotation_period?
+                                                <>
+                                                    <p>Rotation Period</p>
+                                                    <p>{warrior.result.properties.rotation_period}</p>
+                                                </>
+                                                : ""
+                                        :
+                                        "Cargando..."
+                                    }
                                 </div>
                                 <div className="information">
-                                    <p>Eye Color</p>
-                                    <p>{warrior.result ? warrior.result.properties.eye_color : " Cargando..."}</p>
+                                    {warrior.result ?
+                                        warrior.result.properties.eye_color ?
+                                            <>
+                                                <p>Eye Color</p>
+                                                <p>{warrior.result.properties.eye_color}</p>
+                                            </>
+                                            :
+                                            warrior.result.properties.diameter?
+                                                <>
+                                                    <p>Diameter</p>
+                                                    <p>{warrior.result.properties.diameter}</p>
+                                                </>
+                                                : ""
+                                        :
+                                        "Cargando..."
+                                    }
                                 </div>
                             </div>
                         </div>

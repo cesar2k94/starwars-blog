@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Switch>{/* Esta etiqueta se usa para solo escoger una ruta*/}
             <Route  exact path="/" component={List} />
-            <Route  exact path="/information/:id" component={Information} />
+            <Route  exact path="/information/:title/:id" component={Information} />
             <Route component={Error404} />
       </Switch>
     </BrowserRouter>

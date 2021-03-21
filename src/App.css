@@ -15,7 +15,9 @@
     cursor: pointer;
 	font-size: 25px;
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 0px;
+    position: relative;
+    left: -10px;
     color: rgb(219, 114, 15);
 }
 

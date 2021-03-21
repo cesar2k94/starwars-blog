@@ -25,8 +25,8 @@ const Header = () => {
             </Link>
             <div className="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent" >
                 <div className="dropdown" style={mystyle}>
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Favoritos
+                    <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Favoritos ({store.favorites.length})
                      </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         {
@@ -41,7 +41,7 @@ const Header = () => {
                                         />
                                     </li>
                                 )
-                                : <li className="dropdown-item">...</li>
+                                : <li className="dropdown-item">(empty)</li>
                         }
                     </ul>
                 </div>
