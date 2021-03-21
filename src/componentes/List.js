@@ -5,6 +5,7 @@ const List = () => {
 
     const [people, setPeople] = useState({});
     const [planets, setPlanets] = useState({});
+    const [vehicles, setVehicles] = useState({});
 
     useEffect(() => {
         fetch("https://www.swapi.tech/api/people")
@@ -15,6 +16,10 @@ const List = () => {
             .then(resp => resp.json())
             .then(data => setPlanets(data))
             .catch(error => console.log(error));
+        fetch("https://www.swapi.tech/api/vehicles")
+            .then(resp => resp.json())
+            .then(data => setVehicles(data))
+            .catch(error => console.log(error));
     }, []);
     
 
@@ -23,7 +28,7 @@ const List = () => {
             <h2 className="title">People</h2>
             <div className="card-deck" >
                 {people.results ?
-                    people.results.map((list, index) => <Card list={list} index={index + 1} title={"people/"}/>)
+                    people.results.map((list) => <Card list={list} index={list.uid} title={"people/"}/>)
                     :
                     <h1>Cargando...</h1>
                 }
@@ -31,15 +36,15 @@ const List = () => {
             <h2 className="title2">Planets</h2>
             <div className="card-deck">
                 {planets.results ?
-                    planets.results.map((list, index) => <Card list={list} index={index + 1} title={"planets/"} />)
+                    planets.results.map((list) => <Card list={list} index={list.uid} title={"planets/"} />)
                     :
                     <h1>Cargando...</h1>
                 }
             </div>
             <h2 className="title2">Vehicles</h2>
             <div className="card-deck">
-                {people.results ?
-                    people.results.map((list, index) => <Card list={list} index={index + 1} title={"people/"}/>)
+                {vehicles.results ?
+                    vehicles.results.map((list) => <Card list={list} index={list.uid} title={"vehicles/"}/>)
                     :
                     <h1>Cargando...</h1>
                 }

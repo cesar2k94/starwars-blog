@@ -12,8 +12,6 @@
     color: red;
 }
 
-
-
 .starwars{
     cursor: pointer; 
     color: rgb(58, 57, 55);
@@ -29,8 +27,6 @@
     margin-left: 5px;
     color: rgb(17, 16, 17);
   }
-
-
 
 .favorites{
     cursor: pointer;

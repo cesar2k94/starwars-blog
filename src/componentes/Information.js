@@ -47,7 +47,13 @@ const Information = () => {
                                                     <p>Climate</p>
                                                     <p>{warrior.result.properties.climate}</p>
                                                 </>
-                                                : ""
+                                                :
+                                                warrior.result.properties.vehicle_class ?
+                                                    <>
+                                                        <p>Vehicle Class</p>
+                                                        <p>{warrior.result.properties.vehicle_class}</p>
+                                                    </>
+                                                    :"..."
                                         :
                                         "Cargando..."
                                     }
@@ -65,7 +71,13 @@ const Information = () => {
                                                     <p>Population</p>
                                                     <p>{warrior.result.properties.population}</p>
                                                 </>
-                                                : ""
+                                                :
+                                                warrior.result.properties.passengers ?
+                                                    <>
+                                                        <p>Passengers</p>
+                                                        <p>{warrior.result.properties.passengers}</p>
+                                                    </>
+                                                    :"..."
                                         :
                                         "Cargando..."
                                     }
@@ -83,7 +95,13 @@ const Information = () => {
                                                     <p>Orbital Period</p>
                                                     <p>{warrior.result.properties.orbital_period}</p>
                                                 </>
-                                                : ""
+                                                :
+                                                warrior.result.properties.cargo_capacity ?
+                                                    <>
+                                                        <p>Cargo Capacity</p>
+                                                        <p>{warrior.result.properties.cargo_capacity}</p>
+                                                    </>
+                                                    :"..."
                                         :
                                         "Cargando..."
                                     }                                
@@ -101,7 +119,13 @@ const Information = () => {
                                                     <p>Rotation Period</p>
                                                     <p>{warrior.result.properties.rotation_period}</p>
                                                 </>
-                                                : ""
+                                                :
+                                                warrior.result.properties.consumables ?
+                                                    <>
+                                                        <p>Consumables</p>
+                                                        <p>{warrior.result.properties.consumables}</p>
+                                                    </>
+                                                    :"..."
                                         :
                                         "Cargando..."
                                     }

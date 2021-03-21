@@ -34,8 +34,6 @@ const Card = ({ list, index, title }) => {
     }, []);
 
 
-
-
     //Eliminar o agregar de favoritos
     const Addfavorites = () => {
         store.favorites.map((list2) => {
@@ -60,14 +58,17 @@ const Card = ({ list, index, title }) => {
                 style={mystylePhoto}
                 src='./data/descarga.jpg' alt="Card image cap " />
             <div className="card-body" >
-                <h6 className="card-title">{list.name}</h6>
+                <h6 className="card-title">{heroe.result ? heroe.result.properties.name : "...."}</h6>
                 <p className="card-text">{heroe.result ?
                     heroe.result.properties.gender ?
                         <p>Gender: {heroe.result.properties.gender}</p>
                         :
                         heroe.result.properties.population ?
                             <p>Population: {heroe.result.properties.population} </p>
-                            : " ..."
+                            :
+                            heroe.result.properties.passengers ?
+                                <p>Passengers: {heroe.result.properties.passengers} </p>
+                                : "..."
                     : " ..."
                 }
                 </p>
@@ -77,7 +78,10 @@ const Card = ({ list, index, title }) => {
                         :
                         heroe.result.properties.climate ?
                             <p>Climate: {heroe.result.properties.climate} </p>
-                            : " ..."
+                            :
+                            heroe.result.properties.vehicle_class ?
+                                <p>Vehicle Class: {heroe.result.properties.vehicle_class} </p>
+                                : "..."
                     : " ..."
                 }
                 </p>
